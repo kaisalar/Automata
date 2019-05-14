@@ -1,0 +1,67 @@
+﻿<Window x:Class="AutomataProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutomataProject"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="480" Width="720">
+    <Grid>
+        <StackPanel>
+            <Button 
+            x:Name="selectAutomataButton"
+            Content="Select Your Automata"
+            HorizontalAlignment="Center"
+            Background="DodgerBlue"
+            Margin="0 20"
+            Foreground="White"
+            Padding="10 10"
+            BorderThickness="0"
+            FontSize="18"
+            Click="selectAutomataButton_Click" FontFamily="Segoe UI Light"/>
+            <TextBlock
+            x:Name="automataNameTextBlock"
+            HorizontalAlignment="Center"
+            FontSize="18"
+            FontWeight="Bold"
+            Foreground="DarkGray"/>
+            <TextBox 
+            x:Name="strTextBox"
+            Width="300"
+            MinLines="1"
+            MaxLines="5"
+            Height="100"
+            IsEnabled="false"
+            Margin="0 10"
+            FontSize="14"
+            TextChanged="strTextBox_TextChanged" FontFamily="Consolas"/>
+            <TextBlock
+            x:Name="strResult"
+            Margin="0 10"
+            HorizontalAlignment="Center"
+            FontSize="14"/>
+            
+        </StackPanel>
+        <Button x:Name="generateAutomata" 
+                HorizontalAlignment="Center"
+            Background="Crimson"
+            Margin="10,390,561.6,10.4"
+            Foreground="White"
+            Padding="5 5"
+            BorderThickness="0"
+            FontSize="16"
+                FontFamily="Segoe UI Light"
+                Click="generateAutomata_Click" Content="Generate Automata"/>
+        <Button x:Name="drawAutomata" 
+                HorizontalAlignment="Center"
+            Background="Crimson"
+            Margin="588,390,9.6,10.4"
+            Foreground="White"
+            Padding="5 5"
+            BorderThickness="0"
+            FontSize="16"
+                FontFamily="Segoe UI Light"
+                Click="drawAutomata_Click" Content="Draw Automata"/>
+    </Grid>
+    
+</Window>
