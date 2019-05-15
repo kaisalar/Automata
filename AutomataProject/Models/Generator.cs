@@ -66,8 +66,8 @@ namespace AutomataProject.Models
 
 
             //----------------------------------
-            trie.push(new List<node>() { new node("/",""), new node("*",""),new node(any,any),new node("*",""),new node("/","") });
-            trie.push(new List<node>() { new node("/",""), new node("/",""),new node(any,any) });
+            trie.push(new List<node>() { new node("/",""), new node("*",any),new node("*",""),new node("/","") });
+            trie.push(new List<node>() { new node("/",""), new node("/",any) });
             trie.generateDFA();
             for (int i = 0; i <any.Length; i++) Trie.genratedDFA.Alphabet.Add(any[i]);
             Trie.genratedDFA.Alphabet.Add('/');
@@ -88,7 +88,8 @@ namespace AutomataProject.Models
             any = any.Remove(any.IndexOf('/'), 1);
             string alphabet="";
 
-            for (int i = 'a'; i <= 'z'; i++) { alphabet += (char)(i); alphabet += (char)(i) - 'a' + 'A'; }
+            for (int i = 'a'; i <= 'z'; i++) { alphabet += (char)(i); alphabet += (char)((i) - 'a' + 'A'); }
+            Console.WriteLine(alphabet);
             List<List<node>> type         = new List<List<node>>();
             List<List<node>> NameValue    = new List<List<node>>() ;
             List<List<node>> comment      = new List<List<node>>();
@@ -101,20 +102,21 @@ namespace AutomataProject.Models
             //float
             type.Add(new List<node>() { new node("f", ""), new node("l", ""), new node("o", ""), new node("a", ""), new node("t", "") });
 
-            NameValue.Add(new List<node>() { new node(" ",""), new node(alphabet,""), new node(alphabet + "0123456789", alphabet + "0123456789"),
+            NameValue.Add(new List<node>() { new node(" ",""), new node(alphabet,alphabet + "0123456789"),new node(";","")});
+            NameValue.Add(new List<node>() { new node(" ",""), new node(alphabet,alphabet + "0123456789"),
                 new node("=",""), new node("0123456789", "0123456789"),new node(".",""), new node("0123456789","0123456789"),new node(";","")});
-            NameValue.Add(new List<node>() { new node(" ",""), new node(alphabet,""), new node(alphabet + "0123456789", alphabet + "0123456789"),
+            NameValue.Add(new List<node>() { new node(" ",""), new node(alphabet,alphabet + "0123456789"),
                 new node("=",""), new node("0123456789", "0123456789"),new node(";","")});
 
-            comment.Add(new List<node>() { new node("/",""), new node("*",""), new node(any,any), new node("*",""), new node("/","") });
-            comment.Add(new List<node>() { new node("/", ""), new node("/", ""), new node(any, any) });
+            comment.Add(new List<node>() { new node("/",""), new node("*",any), new node("*",""), new node("/","") });
+            comment.Add(new List<node>() { new node("/", ""), new node("/",any) });
 
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < type.Count; i++)
             {
-                for (int j = 0; j < 2; j++)
+                for (int j = 0; j < NameValue.Count; j++)
                 {
-                    for (int k = 0; k < 2; k++)
+                    for (int k = 0; k < comment.Count; k++)
                     {
                         List<node> current = type[i];
                         current.AddRange(NameValue[j]);

@@ -27,7 +27,7 @@ namespace AutomataProject
 
         public CreateJsonWindow(){
             InitializeComponent();
-            //DFA NumbersDFA = Generator.generateDeclareVariableDFA();
+            DFA NumbersDFA = Generator.generateDeclareVariableDFA();
             //foreach(var state in NumbersDFA.States){
             //    Console.WriteLine(state.Name + ":");
             //    foreach(var nextState in state.Transitions){
